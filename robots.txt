@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://wass3r.github.io/zola-test/sitemap.xml
