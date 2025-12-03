@@ -12,10 +12,10 @@ jobs:
 
     steps:
       - name: clone
-        uses: actions/checkout@v2
+        uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
 
       - name: build
-        uses: wass3r/actions-zola@v1.2.2
+        uses: wass3r/actions-zola@7f255031e5c9fb536f2b7c8f7dab01ba2bba1355 # v2.0.0
 
       - uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
