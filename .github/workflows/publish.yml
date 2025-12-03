@@ -17,8 +17,21 @@ jobs:
       - name: build
         uses: wass3r/actions-zola@7f255031e5c9fb536f2b7c8f7dab01ba2bba1355 # v2.0.0
 
-      - uses: JamesIves/github-pages-deploy-action@releases/v3
+      - name: upload
+        id: deployment
+        uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4.0.0
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH: gh-pages
-          FOLDER: public
+          path: public/
+
+  deploy:
+    needs: publish
+    runs-on: ubuntu-latest
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: deploy to pages
+        id: deployment
+        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4.0.5
