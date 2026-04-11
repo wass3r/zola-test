@@ -5,6 +5,9 @@ on:
   push:
     branches:
       - master
+      
+permissions:
+  contents: read
 
 jobs:
   publish:
@@ -13,6 +16,8 @@ jobs:
     steps:
       - name: clone
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
 
       - name: build
         uses: wass3r/actions-zola@6bc1b2fc208cccf3bc5e90a53fbf58a641a0d757 # v2.1.0
